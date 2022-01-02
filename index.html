@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burguer King</title>
+    <link rel="stylesheet" href="estilo/style.css">
+    <link rel="shortcut icon" href="imagens/logo-burger-king.png" type="image/x-icon">
+    
+</head>
+<body>
+    <header>
+        <img src="imagens/logo-burger-king.png" alt="">
+        <nav>
+            <a href="#">Pedir Produto</a>
+            <a href="#">Contato</a>
+            <a href="#">Dúvidas Frequentes</a>
+            <a href="#">Sobre Nós</a>
+            <div class="pre-menu">
+                <div class="menu"></div>
+            </div>
+        </nav>
+    </header>
+    <section class="pedido">
+                <span>Seu pedido:</span>
+                <ul>
+                    
+                </ul>
+            </section>
+    <section class="body">
+        
+        <main>
+            <section class="produto">
+                <section class="produto-desc">
+                    <img src="imagens/chicken-crisp.png" alt="">
+                    <div>
+                        Chicken Crisp
+                    </div>
+                    <section class="produto-more">
+                    Pão de brioche, um delicioso e suculento filé de peito de frango crocante, maionese, alface, tomate e duas fatias de queijo cheddar. Todos esses ingredientes são cuidadosamente armazenados e preparados para você se deliciar com um sanduíche fresquinho e de alta qualidade.
+                </section>
+                </section>
+                
+                <button class="produto">
+                    Pedir Produto
+                </button>
+            </section>
+            <section class="produto">
+                <section class="produto-desc">
+                    <img src="imagens/whopper.png" alt="">
+                    <div>Whopper</div>
+                    <section class="produto-more">
+                        Pão com gergelim, maionese, alface, tomate, cebola, ketchup, picles, queijo derretido e um suculento hambúrguer de pura carne bovina. Todos esses ingredientes são cuidadosamente armazenados e preparados, para você se deliciar com um sanduíche fresquinho e de alta qualidade.
+                    </section>
+                </section>
+                <button class="produto">
+                    Pedir Produto
+                </button>
+            </section>
+            <section class="produto">
+                <section class="produto-desc">
+                    <img src="imagens/shake-doce-de-leite.png" alt="">
+                    <div class="font-36">Shake Doce de Leite</div>
+                    <section class="produto-more">
+                        O Shake pode ser sua sobremesa ou seu acompanhamento. Esta versão vem no sabor Doce de Leite. 
+                    </section>
+                </section>
+                <button class="produto">Pedir Produto</button>
+            </section>
+            <section class="produto">
+                <section class="produto-desc">
+                    <img src="imagens/shake-de-baunilha.png" alt="">
+                    <div>Shake Baunilha</div>
+                    <section class="produto-more">
+                        O Shake pode ser sua sobremesa ou seu acompanhamento. Esta versão vem no sabor Baunilha.
+                    </section>
+                </section>
+                <button class="produto">
+                    Pedir Produto
+                </button>
+            </section>
+            <section class="produto">
+                <section class="produto-desc">
+                    <img src="imagens/balde-de-batata.png" alt="">
+                    <div>Balde de Batata</div>
+                    <section class="produto-more">
+                        Nossas crocantes e irresistíveis batatas fritas agora na versão balde!
+                    </section>
+                </section>
+                <button class="produto">
+                    Pedir Produto
+                </button>
+            </section>
+            <section class="produto">
+                <section class="produto-desc">
+                    <img src="imagens/batata-frita.png" alt="">
+                    <div>
+                        Batata Frita
+                    </div>
+                    <section class="produto-more">
+                        Crocantes e irresistíveis, nossas batatas fritas podem vir no tamanho pequeno, médio e grande e são servidas sempre levemente salgadas. Estas delícias são o acompanhamento perfeito para o seu sanduíche perfeito
+                    </section>
+                </section>
+                <button class="produto">
+                    Pedir Produto
+                </button>
+            </section>
+    </section>
+    </main>
+    <script>
+        document.querySelectorAll('button.produto').forEach(item => {
+            item.addEventListener('click', event => {
+            var texto = event.target.parentNode.firstElementChild.children[1].innerHTML
+            var li = document.createElement('li')
+            var ul = document.getElementsByTagName('ul')[0]
+            
+            if(event.target.style.backgroundColor == 'green'){
+                event.target.removeAttribute('style')
+                var lr = document.getElementsByTagName('li')
+                for (i = 0; i < lr.length; i++){
+                    console.log(lr[i].innerText)
+                    if (lr[i].innerText.replace(/\s+/g, '').replace(/[0-9]/g, '') == texto.replace(/\s+/g, '')){
+                        lr[i].remove()
+                    }
+                }
+            } else{
+                ul.appendChild(li)
+                event.target.style.backgroundColor = 'green'
+                li.innerHTML = texto
+                img = document.createElement('img')
+                li.appendChild(img)
+                img.setAttribute('src', 'imagens/mais.png')
+                img.className = 'img-pedido'
+                imgObservation()
+            }
+            })
+        })
+        function imgObservation(){
+            var span = document.createElement("span")
+            document.querySelectorAll('img.img-pedido').forEach(item => {
+                item.addEventListener('click', event => {
+                var item = event.target.parentNode
+                if (item.children[1]){     
+                    qtsPreConvert = item.children[1].innerHTML
+                    var qtsPre = parseInt(qtsPreConvert)
+                    var qts = qtsPre + 1
+                    span.innerHTML = qts
+                } else{
+                    item.append(span)
+                    span.innerHTML = 2   
+                }
+                })
+            })}
+            var pedido = document.getElementsByClassName('pedido')[0]
+            pedido.addEventListener('click', event => {
+                if (pedido.classList.contains('pedido-active')){
+                    pedido.classList = 'pedido'
+                } else{
+                    pedido.classList += ' pedido-active'
+                }
+               
+            })
+</script>
+</body>
+</html>
