@@ -28,9 +28,14 @@ section.produto-desc:hover > section.produto-more{
 .pedido{
     position: sticky;
     top: 20px;
-    padding-left: 15px;
     font-size: 16pt;
+    display: flex;
+}
+
+.borda{
     border-left: 10px solid black;
+    height: 100%;
+    margin-right: 10px;
 }
 
 section.body{

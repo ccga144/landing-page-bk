@@ -23,6 +23,7 @@
         </nav>
     </header>
     <section class="pedido">
+    <section class="borda"></section>
                 <span>Seu pedido:</span>
                 <ul>
                     
@@ -152,8 +153,9 @@
                 }
                 })
             })}
-            var pedido = document.getElementsByClassName('pedido')[0]
-            pedido.addEventListener('click', event => {
+            var pedidoBorda = document.getElementsByClassName('borda')[0]
+            pedidoBorda.addEventListener('click', event => {
+                var pedido = document.getElementsByClassName('pedido')[0]
                 if (pedido.classList.contains('pedido-active')){
                     pedido.classList = 'pedido'
                 } else{
