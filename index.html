@@ -122,7 +122,7 @@
                 for (i = 0; i < lr.length; i++){
                     console.log(lr[i].innerText)
                     if (lr[i].innerText.replace(/\s+/g, '').replace(/[0-9]/g, '') == texto.replace(/\s+/g, '')){
-                        lr[i].remove()
+                         lr[i].remove()
                     }
                 }
             } else{
@@ -142,11 +142,15 @@
             document.querySelectorAll('img.img-pedido').forEach(item => {
                 item.addEventListener('click', event => {
                 var item = event.target.parentNode
+                console.log(item)
+                console.log(item.children)
                 if (item.children[1]){     
                     qtsPreConvert = item.children[1].innerHTML
+                    var spanChange = item.children[1]
+                    console.log(qtsPreConvert, spanChange)
                     var qtsPre = parseInt(qtsPreConvert)
                     var qts = qtsPre + 1
-                    span.innerHTML = qts
+                    spanChange.innerHTML = qts
                 } else{
                     item.append(span)
                     span.innerHTML = 2   
